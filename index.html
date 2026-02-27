@@ -1,14 +1,157 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 위인 지혜 상담소 - 공자, 부처, 예수, 소크라테스의 조언</title>
+    <meta name="description" content="인류의 성인들이 전하는 고품격 지혜와 위로. 공자, 부처, 예수, 소크라테스 AI와 상담하고 삶의 정답을 찾아보세요.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .chat-container { height: 400px; overflow-y: auto; }
+        .sage-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
 </head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+<body class="bg-stone-50 text-stone-800 leading-relaxed">
+
+    <header class="bg-white border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-stone-900">AI 위인 지혜 상담소</h1>
+            <nav>
+                <ul class="flex space-x-6 text-sm font-medium">
+                    <li><a href="/" class="hover:text-blue-600">홈</a></li>
+                    <li><a href="/about.html" class="hover:text-blue-600">운영자 소개</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- 상담소 섹션 -->
+        <section id="chat-app" class="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
+            <div class="p-6 bg-stone-900 text-white">
+                <h2 class="text-2xl font-bold mb-2">오늘의 고민을 말씀해주세요</h2>
+                <p class="text-stone-400 text-sm">상담하고 싶은 성인을 선택하신 후 대화를 시작하세요.</p>
+            </div>
+
+            <!-- 성인 선택 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-stone-100 border-b border-stone-200">
+                <button onclick="selectSage('confucius')" id="btn-confucius" class="sage-card p-4 rounded-xl bg-white shadow-sm border-2 border-transparent text-center focus:outline-none">
+                    <div class="text-3xl mb-2">📜</div>
+                    <div class="font-bold">공자</div>
+                    <div class="text-xs text-stone-500">논어의 지혜</div>
+                </button>
+                <button onclick="selectSage('buddha')" id="btn-buddha" class="sage-card p-4 rounded-xl bg-white shadow-sm border-2 border-transparent text-center focus:outline-none">
+                    <div class="text-3xl mb-2">🧘</div>
+                    <div class="font-bold">부처</div>
+                    <div class="text-xs text-stone-500">법구경의 자비</div>
+                </button>
+                <button onclick="selectSage('jesus')" id="btn-jesus" class="sage-card p-4 rounded-xl bg-white shadow-sm border-2 border-transparent text-center focus:outline-none">
+                    <div class="text-3xl mb-2">✝️</div>
+                    <div class="font-bold">예수</div>
+                    <div class="text-xs text-stone-500">성경의 사랑</div>
+                </button>
+                <button onclick="selectSage('socrates')" id="btn-socrates" class="sage-card p-4 rounded-xl bg-white shadow-sm border-2 border-transparent text-center focus:outline-none">
+                    <div class="text-3xl mb-2">⚖️</div>
+                    <div class="font-bold">소크라테스</div>
+                    <div class="text-xs text-stone-500">문답의 철학</div>
+                </button>
+            </div>
+
+            <!-- 채팅 메시지 영역 -->
+            <div id="chat-messages" class="chat-container p-6 space-y-4 bg-white">
+                <div class="flex justify-start">
+                    <div class="bg-stone-100 rounded-2xl px-4 py-2 max-w-[80%]">
+                        안녕하세요. 저는 인류의 지혜를 전하는 AI 가이드입니다. 먼저 상담하실 위인을 위에서 선택해 주세요.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 입력창 -->
+            <div class="p-4 border-t border-stone-200 flex gap-2">
+                <input type="text" id="user-input" placeholder="고민을 입력하세요..." class="flex-1 p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-stone-500 focus:outline-none">
+                <button onclick="sendMessage()" class="bg-stone-900 text-white px-6 py-2 rounded-lg font-bold hover:bg-stone-800">전송</button>
+            </div>
+        </section>
+
+        <!-- 에드센스 승인을 위한 텍스트 콘텐츠 -->
+        <article class="prose max-w-none text-stone-700 space-y-8 border-t border-stone-200 pt-12">
+            <section>
+                <h2 class="text-3xl font-bold text-stone-900 mb-6">위인의 지혜: 동양 철학의 깊은 울림</h2>
+                <h3 class="text-xl font-bold text-stone-800 mb-4">공자의 '인(仁)' 사상이 현대 교육에 주는 시사점</h3>
+                <p>
+                    공자의 철학적 핵심인 '인(仁)'은 단순히 '사랑'이나 '자비'를 넘어선 인간 본연의 따뜻한 성품을 의미합니다. 공자는 인을 실천하는 구체적인 방법으로 '충(忠)'과 '서(恕)'를 강조했습니다. 충은 자신의 마음을 다하는 진정성이고, 서는 남의 마음을 헤아려 나를 미루어 타인을 대하는 배려입니다. [cite: 2025-12-25]
+                </p>
+                <p>
+                    현대 교육 현장에서 공자의 인 사상은 큰 시사점을 줍니다. 오늘날의 교육이 지식 전달과 기술 습득에만 치중하고 있다면, 공자는 '군자(君子)'라는 이상적 인간상을 통해 인격 형성이 교육의 본질임을 설파했습니다. 특히 인의 시작은 부모에 대한 효(孝)와 형제간의 우애(悌)에서 시작된다는 가르침은 무너져가는 가정 공동체의 소중함을 일깨워줍니다. 아이들이 타인을 존중하고 자신을 닦는 법(수기안인, 修己安人)을 배울 때, 진정한 의미의 민주 시민 교육이 완성될 수 있습니다.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold text-stone-800 mb-4">맹자의 '성선설'과 '사단(四端)'에 대한 분석</h3>
+                <p>
+                    맹자는 인간의 본성이 선하다는 '성선설'을 바탕으로 유교 철학을 확장시켰습니다. 그는 인간이 태어날 때부터 가지고 있는 네 가지 선한 마음인 '사단'을 증거로 제시했습니다. 불쌍히 여기는 마음인 측은지심(惻隱之心), 옳지 않음을 부끄러워하고 미워하는 마음인 수오지심(羞惡之心), 사양하고 양보하는 마음인 사양지심(辭讓之心), 옳고 그름을 가리는 마음인 시비지심(是非之心)이 그것입니다. [cite: 2026-01-26]
+                </p>
+                <p>
+                    이 사단은 각각 인(仁), 의(義), 예(禮), 지(智)라는 사덕(四德)의 단서가 됩니다. 맹자는 이러한 선한 본성을 지키고 기르는 것(존심양성, 存心養性)이 삶의 핵심이라고 보았습니다. 현대 심리학에서 말하는 공감 능력과 도덕적 직관은 맹자의 사단론과 그 궤를 같이 합니다. 맹자의 가르침은 인간이 환경에 의해 타락할 수는 있어도, 그 내면에 깃든 고귀한 빛은 사라지지 않는다는 희망의 메시지를 전달합니다. 우리는 교육과 수양을 통해 이 '사단'을 확충하여 대장부(大丈夫)로서의 기상을 펼쳐야 합니다.
+                </p>
+            </section>
+
+            <section>
+                <h3 class="text-xl font-bold text-stone-800 mb-4">고전 인문학의 가치와 교육적 활용</h3>
+                <p>
+                    동양 고전은 단순히 옛날 이야기가 아닙니다. 그것은 수천 년의 시간 동안 검증된 '인간에 대한 통찰'의 정수입니다. 공자와 맹자의 가르침은 개인의 내면적 평화뿐만 아니라 정의로운 사회를 구현하는 초석이 됩니다. 특히 사단과 사덕에 기초한 윤리 교육은 경쟁 중심의 사회에서 지친 청소년들에게 자아 존중감과 공동체 의식을 심어줄 수 있는 강력한 도구가 됩니다. [cite: 2025-12-31]
+                </p>
+                <p>
+                    이 사이트는 이러한 클래식 중국학의 보배로운 가치를 현대적인 AI 기술과 결합하여, 남녀노소 누구나 쉽게 위인들의 지혜에 접근할 수 있도록 제작되었습니다. 어려운 한자 문구가 아니라, 우리 삶의 구체적인 고민에 대한 위인들의 따뜻한 답변을 통해 인문학이 살아있는 교육의 장이 되기를 희망합니다.
+                </p>
+            </section>
+
+            <section class="bg-stone-100 p-8 rounded-xl">
+                <h3 class="text-xl font-bold text-stone-900 mb-4">개발 취지 및 운영 철학</h3>
+                <p>
+                    본 서비스는 '클래식 중국학'을 깊이 있게 공부하고 연구하는 전문가가 아이들과 청소년들에게 성인들의 삶의 지혜를 보다 친숙하게 전달하기 위해 교육용 목적으로 기획하고 제작하였습니다. 현대 사회가 직면한 수많은 갈등과 소외의 문제는 결국 '인간다움'에 대한 상실에서 비롯됩니다. [cite: 2025-12-31]
+                </p>
+                <p>
+                    우리는 위인들의 문헌(논어, 법구경, 성경, 플라톤의 대화편 등)을 철저히 분석하여 각 인물의 철학적 정체성을 AI 페르소나에 투영하였습니다. 이를 통해 사용자는 단순한 챗봇과의 대화가 아닌, 시대를 초월한 스승과의 만남을 경험하게 됩니다. 본 상담소는 수익 창출을 넘어 우리 사회의 인문학적 소양을 넓히고 정서적 안정을 돕는 공익적 교육 플랫폼으로서의 역할을 다하고자 합니다.
+                </p>
+                <p>
+                    상담소에서 제공하는 답변은 각 위인의 실제 사료와 어록을 바탕으로 생성됩니다. 고민의 무게가 무거울 때, 혹은 삶의 방향을 잃었을 때 이곳에서 잠시 쉬어가며 성인들의 목소리에 귀를 기울여 보시기 바랍니다.
+                </p>
+            </section>
+        </article>
+    </main>
+
+    <footer class="bg-stone-900 text-stone-400 py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-bold mb-4">AI 위인 지혜 상담소</h4>
+                    <p class="text-sm">성인들의 지혜를 현대인에게 전달하는 교육 플랫폼입니다.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">빠른 링크</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="/" class="hover:text-white">홈</a></li>
+                        <li><a href="/about.html" class="hover:text-white">운영자 소개</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">법적 고지</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="/privacy.html" class="hover:text-white">개인정보처리방침</a></li>
+                        <li><a href="/terms.html" class="hover:text-white">이용약관</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-stone-800 pt-8 text-center text-xs">
+                <p>&copy; 2026 AI 위인 지혜 상담소. All rights reserved.</p>
+                <p class="mt-2">본 사이트는 교육용 목적으로 운영되며, 구글 에드센스 승인을 준비 중입니다.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/main.js"></script>
 </body>
 </html>
