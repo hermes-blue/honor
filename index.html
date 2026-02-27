@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 위인 지혜 상담소 - 초등 인성 교육 및 클래식 중국학 전문 플랫폼</title>
+    <meta name="description" content="현직 초등교사이자 클래식 중국학 전문가가 운영하는 교육용 고전 상담 서비스입니다. 공자, 맹자, 부처, 예수의 지혜를 통해 아이들에게 올바른 가치관과 깊이 있는 인문학적 통찰을 제공합니다.">
+    <meta name="keywords" content="초등인성교육, 고전지혜, 공자, 맹자, 논어해설, 인문학상담, 에드센스승인, 클래식중국학, 고전번역원">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .serif { font-family: 'Noto Serif KR', serif; }
+        .chat-container { height: 550px; overflow-y: auto; scroll-behavior: smooth; }
+        .knowledge-content p { margin-bottom: 2rem; line-height: 2; text-align: justify; }
+        .sage-card:hover { transform: translateY(-8px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hanja { font-family: 'Noto Serif KR', serif; color: #1a202c; font-weight: 700; background: #fffbeb; padding: 2px 6px; border-radius: 4px; border-bottom: 2px solid #fde68a; }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); }
+        .modal-content { background: white; margin: 5% auto; padding: 48px; border-radius: 32px; width: 90%; max-width: 900px; max-height: 85vh; overflow-y: auto; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900 leading-relaxed">
+
+    <!-- 전문적인 헤더 -->
+    <header class="bg-white/90 backdrop-blur-md border-b border-stone-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🏛️</span>
+                <h1 class="text-2xl font-bold text-stone-900 serif tracking-tighter cursor-pointer" onclick="location.href='/'">AI 위인 지혜 상담소</h1>
+            </div>
+            <nav class="hidden md:flex font-bold text-sm text-stone-600 space-x-10 uppercase tracking-widest">
+                <a href="#chat-app" class="hover:text-amber-800 transition">상담 시작</a>
+                <a href="#knowledge-base" class="hover:text-amber-800 transition">지식 백과</a>
+                <a href="#creator-profile" class="hover:text-amber-800 transition">전문가 소개</a>
+                <a href="/about.html" class="hover:text-amber-800 transition">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-16">
+        
+        <!-- 제작자 신뢰성 섹션 (E-E-A-T 강화) -->
+        <section id="creator-profile" class="mb-24 bg-gradient-to-r from-stone-900 to-stone-800 rounded-[40px] p-12 text-white shadow-2xl relative overflow-hidden border border-white/10">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div class="flex flex-col md:flex-row items-center gap-12 relative z-10">
+                <div class="w-40 h-40 bg-white/10 rounded-full flex items-center justify-center text-6xl shadow-inner backdrop-blur-sm border border-white/20">👨‍🏫</div>
+                <div class="flex-1 text-center md:text-left">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3 mb-4">
+                        <span class="bg-amber-600 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-tighter">Verified Expert</span>
+                        <span class="bg-white/10 text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-tighter">Elementary Education</span>
+                    </div>
+                    <h2 class="text-4xl font-bold mb-4 serif">클래식 중국학 전문가 & 현직 초등교사 운영</h2>
+                    <p class="text-stone-300 text-lg leading-relaxed max-w-3xl">
+                        본 서비스는 **대학에서 클래식 중국학(Classic Sinology)을 전공**하고, 현재 **고전번역원 입학을 준비 중인 전문 연구자**이자 **현직 초등교사**가 교육적 목적으로 직접 기획하고 제작하였습니다. 수천 년의 지혜가 담긴 원전 데이터를 바탕으로, 아이들의 인성 함양과 올바른 가치관 형성을 돕는 정교한 교육 도구입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 챗봇 섹션 -->
+        <section id="chat-app" class="bg-white rounded-[40px] shadow-2xl overflow-hidden mb-32 border border-stone-200">
+            <div class="p-10 bg-stone-50 border-b border-stone-200 text-center">
+                <h3 class="text-3xl font-bold serif mb-3 tracking-tight text-stone-800">성인(聖인)들과의 대화</h3>
+                <p class="text-stone-500 font-medium">상담받고 싶은 위인을 선택하신 후, 고민을 진솔하게 말씀해 주세요.</p>
+            </div>
+
+            <!-- 위인 선택 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 p-10 bg-white">
+                <button onclick="selectSage('confucius')" id="btn-confucius" class="sage-card p-8 rounded-3xl bg-stone-50 shadow-sm border-2 border-transparent text-center focus:outline-none transition-all duration-300 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">📜</div>
+                    <div class="font-bold text-xl mb-1 text-stone-800">공자</div>
+                    <div class="text-xs text-amber-800 font-bold uppercase tracking-widest">Confucius</div>
+                </button>
+                <button onclick="selectSage('buddha')" id="btn-buddha" class="sage-card p-8 rounded-3xl bg-stone-50 shadow-sm border-2 border-transparent text-center focus:outline-none transition-all duration-300 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🧘</div>
+                    <div class="font-bold text-xl mb-1 text-stone-800">부처</div>
+                    <div class="text-xs text-amber-800 font-bold uppercase tracking-widest">Buddha</div>
+                </button>
+                <button onclick="selectSage('jesus')" id="btn-jesus" class="sage-card p-8 rounded-3xl bg-stone-50 shadow-sm border-2 border-transparent text-center focus:outline-none transition-all duration-300 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">✝️</div>
+                    <div class="font-bold text-xl mb-1 text-stone-800">예수</div>
+                    <div class="text-xs text-amber-800 font-bold uppercase tracking-widest">Jesus</div>
+                </button>
+                <button onclick="selectSage('socrates')" id="btn-socrates" class="sage-card p-8 rounded-3xl bg-stone-50 shadow-sm border-2 border-transparent text-center focus:outline-none transition-all duration-300 group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⚖️</div>
+                    <div class="font-bold text-xl mb-1 text-stone-800">소크라테스</div>
+                    <div class="text-xs text-amber-800 font-bold uppercase tracking-widest">Socrates</div>
+                </button>
+            </div>
+
+            <!-- 메시지 영역 -->
+            <div id="chat-messages" class="chat-container p-10 space-y-8 bg-white border-y border-stone-100">
+                <div class="flex justify-start">
+                    <div class="bg-stone-50 rounded-3xl px-8 py-5 max-w-[85%] text-stone-700 leading-relaxed shadow-sm border border-stone-200">
+                        안녕하십니까. 본 상담소는 원전 텍스트를 정밀 분석한 AI 상담 시스템입니다. 상단에서 상담받으실 성인을 선택해 주시면, 해당 인물의 철학적 정체성을 바탕으로 깊이 있는 조언을 드립니다.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 입력바 -->
+            <div class="p-8 bg-stone-50 flex gap-4 items-center">
+                <input type="text" id="user-input" placeholder="성찰하고 싶은 내용을 입력해 주세요..." class="flex-1 p-5 border-2 border-stone-200 rounded-3xl focus:ring-4 focus:ring-amber-100 focus:border-amber-800 focus:outline-none shadow-inner transition-all text-lg">
+                <button onclick="sendMessage()" class="bg-amber-900 text-white px-10 py-5 rounded-3xl font-bold hover:bg-black transition-all shadow-xl active:scale-95">상담 전송</button>
+            </div>
+        </section>
+
+        <!-- [핵심] 지식 백과 섹션 (10편 심층 아카이브) -->
+        <article id="knowledge-base" class="knowledge-content prose max-w-none text-stone-700 border-t-2 border-stone-200 pt-24 mb-32">
+            <header class="mb-24 text-center">
+                <span class="text-amber-800 font-bold tracking-[0.4em] uppercase text-sm mb-6 block underline decoration-amber-200 decoration-4 underline-offset-8">Academic Resource Center</span>
+                <h2 class="text-5xl font-bold text-stone-900 serif mb-8 tracking-tighter">고전 철학과 초등 교육의 만남: 10개의 심층 주제</h2>
+                <p class="max-w-3xl mx-auto text-stone-500 text-base leading-relaxed">
+                    본 지식 백과는 동양과 서양의 대표적인 고전 철학을 학술적 연구에 근거해 정리한 뒤, 실제 초등 교육 현장의 생활 지도·인성 교육·민주시민 교육과 연결한 전문 아카이브입니다.
+                    각 글은 고전 원문과 주요 해석서를 인용하고, 교실에서 바로 적용 가능한 교육적 시사점을 제시합니다.
+                </p>
+                <div class="w-32 h-1.5 bg-amber-800 mx-auto mt-8 rounded-full"></div>
+            </header>
+
+            <!-- 1. 공자의 인과 예 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    1. 공자의 '인(仁)'과 '예(禮)': 주희와 현대 연구자의 대화를 통한 생활 규범 교육 [cite: 『논어집주』, 2025-12-25]
+                </h3>
+                <p>
+                    유학의 핵심 개념인 **'인(仁)'**은 단순한 친밀감이나 호감의 감정을 넘어, 사람과 사람 사이를 잇는 도덕적 에너지이자
+                    공동체를 지탱하는 근본 원리입니다. 『논어(論語)』 「안연(顏淵)」편에서 공자는
+                    <span class="hanja">「克己復禮為仁(극기복례위인)」</span>,
+                    즉 "자신의 사사로운 욕심을 이겨 예로 돌아가는 것이 인이다"라고 말합니다.
+                    송대 성리학자 **주희(朱熹)**는 『논어집주(論語集註)』에서 인을
+                    <span class="hanja">「心之德, 愛之理」</span>, 곧 마음의 덕이자 사랑의 이치라고 풀이하며,
+                    인이 추상적인 감정이 아니라 구체적인 행위 규범으로 드러나야 함을 강조했습니다.
+                </p>
+                <p>
+                    현대의 연구자들은 공자의 인을 '관계 윤리'의 언어로 재해석합니다.
+                    예를 들어 한국의 교육철학 논문들에서는, 인이 부모-자녀·교사-학생·또래 친구 사이의
+                    신뢰와 책임감을 구조화하는 핵심 개념이라는 점을 지적합니다.
+                    공자가 말한 <span class="hanja">「己所不欲 勿施於人(기소불욕 물시어인)」</span>은
+                    "내가 원하지 않는 바를 남에게 베풀지 말라"는, 오늘날의 '역지사지 교육'과 정확히 맞닿아 있습니다.
+                    이를 교실에서 구현할 때 교사는 단순히 규칙 위반을 처벌하는 것이 아니라,
+                    "내가 친구라면 이 말을 들었을 때 어떤 기분이 들까?"와 같은 질문을 던져
+                    아이가 스스로 타인의 감정을 상상하도록 돕는 방식으로 지도할 수 있습니다.
+                </p>
+                <p>
+                    초등 생활 지도에서 인과 예는 곧 **'관계에서 지켜야 할 최소한의 약속'**으로 구체화됩니다.
+                    아침 조회 시간에 서로의 눈을 바라보며 인사하기, 복도에서 뛰지 않기, 친구의 소지품을 허락 없이 만지지 않기,
+                    온라인 단체 채팅방에서 놀리는 말을 반복하지 않기 등은 모두 예의 현대적 실천 사례입니다.
+                    교사는 생활 규칙을 일방적으로 공지하는 대신, 공자의 원문을 짧게 보여 준 뒤
+                    "우리 반만의 '예'를 만든다면 어떤 조항이 들어가야 할까?"를 묻고,
+                    아이들과 함께 학급 헌장을 만드는 프로젝트 수업을 운영할 수 있습니다.
+                    이때 학술적 배경과 원문은 교사의 이론적 토대가 되고,
+                    학급 규칙은 아이들의 삶 속에 스며드는 **살아 있는 인·예 교육**이 됩니다.
+                </p>
+            </section>
+
+            <!-- 2. 맹자 성선설 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    2. 맹자의 성선설과 사단(四端): 공감 능력과 학급 민주주의의 철학적 기반 [cite: 『맹자』, 2026-01-26]
+                </h3>
+                <p>
+                    **맹자(孟子)**는 인간의 본성이 본래 선하다는 **성선설(性善說)**을 주장하며,
+                    이를 뒷받침하기 위해 네 가지 마음, 곧 **사단(四端)**을 제시했습니다.
+                    『맹자』 「공손추상(公孫丑上)」에서 그는
+                    <span class="hanja">「惻隱之心 仁之端也, 羞惡之心 義之端也, 辭讓之心 禮之端也, 是非之心 智之端也」</span>라고 말하며,
+                    측은지심·수오지심·사양지심·시비지심이 각각 인·의·예·지의 씨앗이라고 설명합니다.
+                    현대 도덕교육 연구에서는 이를 '도덕 정서의 발아점'으로 해석하며,
+                    아이들의 공감 능력과 정의감이 이미 잠재적으로 존재한다는 전제 위에서 교육을 설계해야 한다고 봅니다.
+                </p>
+                <p>
+                    초등 교실에서는 특히 **측은지심과 사양지심**이 학급 민주주의의 핵심 역량으로 기능합니다.
+                    예를 들어, 한 친구가 발표를 하다가 실수했을 때 웃음이 터지는 상황에서
+                    교사는 "만약 네가 그 자리였다면 어떤 기분이 들었을까?"라고 질문함으로써
+                    아이 안에 이미 있는 측은지심을 깨우게 됩니다.
+                    또 학급대표를 선출할 때는 "양보와 배려"의 가치를 중심에 두고,
+                    "나는 이번에 양보하고 다음에 도전하겠다"는 선택도 존중하는 문화를 조성할 수 있습니다.
+                    이는 맹자가 말한 사양지심을 생활 속에서 훈련하는 좋은 예입니다.
+                </p>
+                <p>
+                    학술적으로는 맹자의 민본 사상이 현대 민주주의 이론과 연결되어 논의됩니다.
+                    <span class="hanja">「民爲貴 社稷次之 君爲輕」</span>이라는 구절은
+                    '백성이 가장 귀하고 사직(국가)이 그 다음이며 군주는 가볍다'는 의미로,
+                    오늘날 '주권은 국민에게 있다'는 헌법 정신과 평행 구조를 이룹니다.
+                    교실 차원에서 이를 적용하면, 교사는 "이 반의 주인은 누구인가?"라는 물음을 통해
+                    규칙 제정·자리 배치·프로젝트 주제 선정 등에서 아이들의 참여를 보장하고,
+                    **'아이들이 스스로 책임지는 작은 민주주의 실험실'**로 학급을 설계할 수 있습니다.
+                </p>
+            </section>
+
+            <!-- 3. 순자의 성악설 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    3. 순자의 성악설과 '예(禮)': 초등 생활 지도의 규범적 토대 [cite: 『荀子』, 2026-02-10]
+                </h3>
+                <p>
+                    **순자(荀子)**는 맹자와 달리 인간의 본성이 악하다고 보는 **성악설(性惡說)**을 제시했습니다.
+                    『순자』 「성악(性惡)」편에서 그는
+                    <span class="hanja">「人之性惡 其善者偽也」</span>라고 단언하며,
+                    인간은 욕망·시기·탐욕을 본성으로 타고났고
+                    우리가 '선'이라고 부르는 것은 교육과 습관, 제도라는 인위(人爲)를 통해 비로소 형성된 것이라고 설명합니다.
+                    여기서 **'예(禮)'**는 통제와 억압이 아니라, 서로의 위험한 욕망이 충돌하지 않도록
+                    거리를 조절해 주는 사회적 완충 장치로 이해됩니다.
+                </p>
+                <p>
+                    교육학적으로 볼 때 순자의 성악설은 '훈육의 필요성'을 이론적으로 정당화합니다.
+                    아이들이 교실에서 자연스럽게 보이는 행동,
+                    예를 들어 먼저 줄을 서기 위해 밀치기, 게임 시간에 규칙을 어기기,
+                    친구의 물건을 허락 없이 만지는 행동 등을 "본성이 나빠서 그렇다"라고 단순 비난하기보다는,
+                    "훈련과 교육이 없으면 누구나 그렇게 될 수 있다"는 관점에서 바라보도록 안내합니다.
+                    순자는 <span class="hanja">「故聖人化性而起僞…以成天下之理」</span>라고 하여,
+                    성인은 인간의 성정을 교화하여 마침내 질서를 세운다고 설명하는데,
+                    이는 교사가 아이와 '함께 연습하는 사람'으로 서야 함을 시사합니다.
+                </p>
+                <p>
+                    초등 생활 지도에서 '예'는 매우 구체적인 수업 설계로 이어집니다.
+                    복도 이동 규칙, 급식 줄 서기, 모둠 수업에서 말 차례 지키기, 디지털 기기 사용 시간 약속 등은
+                    모두 순자가 말한 예의 현대적 변주입니다.
+                    교사는 단순히 "조용히 해!"라고 지시하는 대신,
+                    "우리가 말하고 싶은 마음(본성)을 존중하면서도 모두가 안전하게 지낼 수 있으려면
+                    어떤 약속(예)이 필요할까?"라는 질문으로 규칙 만들기 수업을 진행할 수 있습니다.
+                    이때 순자의 사상을 바탕으로 한 교사의 철학적 이해는
+                    규칙을 '강압'이 아닌 '공동체를 지키는 장치'로 설명하는 힘을 제공합니다.
+                </p>
+            </section>
+
+            <!-- 4. 부처의 자비와 연기설 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    4. 부처의 자비와 연기설: 학교 폭력 예방과 공감 교육의 심층 이론 [cite: 『잡아함경』, 2026-02-11]
+                </h3>
+                <p>
+                    불교의 핵심 교리 중 하나인 **연기(緣起)**는
+                    <span class="hanja">「此有故彼有, 此生故彼生(차유고피유 차생고피생)」</span>이라는 문장으로 요약됩니다.
+                    하나의 존재와 사건은 홀로 존재하지 않고, 수많은 인연과 조건이 모여 나타난다는 뜻입니다.
+                    동시에 부처가 강조한 **자비(慈悲)**는 중생의 고통을 함께 느끼고
+                    그 고통을 덜어주려는 적극적인 마음입니다.
+                    현대 불교학에서는 연기를 '관계적 존재론', 자비를 '관계 윤리'의 언어로 해석하며,
+                    타인의 고통을 나의 문제로 받아들이는 감수성이야말로 폭력과 혐오를 줄이는 근본적인 길이라고 설명합니다.
+                </p>
+                <p>
+                    학교 폭력 예방 교육에서 연기설은 "가해자-피해자-방관자"의 단순 구도를 넘어,
+                    교실 전체의 관계망을 성찰하게 하는 데 중요한 도구가 됩니다.
+                    한 아이가 따돌림을 당할 때, 그 상황은 개인의 성격만으로 발생한 것이 아니라
+                    반 분위기, 교사의 지도 방식, 학부모의 태도, 온라인 문화 등 여러 조건이 겹쳐 나타난 결과라는 시각을 갖게 해 줍니다.
+                    교사는 "누군가의 '장난'이 친구의 마음에서 어떻게 증폭되어 상처가 될까?"를 함께 탐구하며,
+                    말 한마디·표정 하나가 전체 관계망에 미치는 파장을 시각화하는 활동(예: 감정의 파도 그리기)을 설계할 수 있습니다.
+                </p>
+                <p>
+                    자비 교육은 구체적인 공감 훈련과 연결됩니다.
+                    불교 수행 전통에서 행해지는 자애명상(metta meditation)을 변형해,
+                    "나 자신이 평안하기를, 내 친구가 평안하기를, 우리 반 모두가 평안하기를"이라고
+                    짧게 마음속으로 되뇌는 활동을 아침 시간에 도입할 수 있습니다.
+                    이는 아이들에게 '나도 소중하고, 친구도 소중하다'는 감각을 몸으로 익히게 하는 좋은 방법입니다.
+                    학술적으로는 연기설과 자비 사상을 기반으로 한 SEL(Social Emotional Learning) 프로그램 연구들이 축적되고 있으며,
+                    이러한 연구 결과를 바탕으로 교사는 학교 폭력 예방을 '규칙 위반의 처벌'이 아니라
+                    **관계 회복과 공동체 치유의 과정**으로 바라보는 관점을 가질 수 있습니다.
+                </p>
+            </section>
+
+            <!-- 5. 예수의 사랑과 용서 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    5. 예수의 사랑과 용서: 회복적 생활 교육과 관계 회복의 철학 [cite: 『마태복음』, 2026-02-12]
+                </h3>
+                <p>
+                    신약성경에서 **예수**가 보여 준 사랑은 그리스어 **아가페(Agape)**로 표현되는,
+                    조건 없는 헌신적 사랑입니다.
+                    『마태복음』 22장 39절의
+                    <span class="hanja">「네 이웃을 네 몸과 같이 사랑하라」</span>는 구절과,
+                    18장 21-22절에서 "일곱 번뿐 아니라 일흔 번씩 일곱 번이라도 용서하라"는 가르침은
+                    관계 회복의 무한한 가능성을 열어 둡니다.
+                    현대 교육학에서는 이러한 사랑과 용서를 '회복적 정의(restorative justice)' 교육의 철학적 토대로 삼으며,
+                    처벌 중심의 생활 지도를 넘어, 피해자의 상처를 돌보고 가해자가 책임을 지되 공동체 안으로 다시 초대하는
+                    회복적 생활 교육을 강조합니다.
+                </p>
+                <p>
+                    실제 교실에서 회복적 생활 교육은 **'사건 이후의 회복 대화'**로 구현될 수 있습니다.
+                    친구 사이에 심한 말다툼이나 따돌림 사건이 발생했을 때,
+                    교사는 가해·피해·목격 학생이 함께 참여하는 서클 대화를 열어
+                    "그때 어떤 일이 있었는지", "그 일이 각자에게 어떤 감정을 남겼는지",
+                    "앞으로 어떻게 달라지기를 원하는지"를 차례대로 말하게 합니다.
+                    이 과정에서 피해자는 자신의 상처를 안전하게 표현할 기회를 얻고,
+                    가해자는 변명 대신 책임 있는 사과와 행동 계획을 세우게 됩니다.
+                    이는 예수가 보여 준 '죄는 미워하되 사람은 사랑하는' 태도의 교육적 적용이라 할 수 있습니다.
+                </p>
+                <p>
+                    학술적으로, 회복적 정의 이론은 형사 사법 체계뿐 아니라 학교 규율 체계 개혁에도 활용되고 있습니다.
+                    처벌만으로는 문제 행동의 근본 원인이 치유되지 않는다는 연구 결과들에 근거해,
+                    많은 나라에서 '회복적 학교(restorative school)' 프로젝트가 이루어지고 있습니다.
+                    초등 교실에서 교사는 예수의 사랑과 용서의 메시지를 직접적인 종교 전파가 아닌
+                    **'실수해도 다시 시작할 수 있는 반'**, **'서로에게 두 번째 기회를 주는 문화'**로 번역해 가르칠 수 있습니다.
+                    이는 아이들에게 죄책감과 수치심에 머무르지 않고,
+                    책임과 변화로 나아가는 건강한 자기 회복 역량을 길러줍니다.
+                </p>
+            </section>
+
+            <!-- 6. 소크라테스의 문답법 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    6. 소크라테스의 문답법: 질문이 살아 있는 교실과 비판적 사고력 [cite: 플라톤 『변론』, 2026-02-13]
+                </h3>
+                <p>
+                    **소크라테스**는 플라톤의 대화편에서 끊임없는 질문을 통해
+                    상대의 생각 속 모순을 드러내고 스스로 진리에 다가가게 하는
+                    **산파술(産婆術, maieutic method)**로 유명합니다.
+                    『변론(Apologia)』에서 그는
+                    <span class="hanja">「나는 내가 아무것도 모른다는 사실만을 안다」</span>라고 고백하며,
+                    진정한 지혜는 무지의 자각에서 시작된다고 말합니다.
+                    현대 교육학에서는 이 대화적 방식을 '소크라테스식 문답법'으로 개념화하고,
+                    교사를 지식을 일방적으로 전달하는 존재가 아니라
+                    학생 안에 잠재된 사유를 끌어내는 동반자로 이해합니다.
+                </p>
+                <p>
+                    초등 교실에서 문답법은 **"정답 대신 이유를 묻는 질문"**으로 구현할 수 있습니다.
+                    예를 들어 도덕 시간에 "친구가 시험지 답을 보여 달라고 할 때 어떻게 해야 할까?"라는 상황을 제시했을 때,
+                    교사는 "안 돼요"라는 정답을 확인하는 데서 멈추지 않고,
+                    "왜 그렇게 생각하니?", "그 선택이 모두에게 어떤 결과를 가져올까?"를 연이어 묻습니다.
+                    또 "만약 모두가 답을 서로 보여 준다면 시험이 우리에게 어떤 의미가 될까?"와 같은 질문을 던져
+                    아이 스스로 규범의 근거를 탐구하게 돕습니다.
+                    이러한 수업은 지식 암기를 넘어, 가치 판단의 근거를 스스로 점검하는 비판적 사고력을 기르는 데 기여합니다.
+                </p>
+                <p>
+                    연구 차원에서는 소크라테스식 문답법이 토론 수업, 프로젝트 수업, 논술 지도와 결합되면서
+                    '질문 중심 수업(question-centered instruction)' 모델로 발전하고 있습니다.
+                    교사는 수업 설계 단계에서 미리 **'깊이 있는 질문 리스트'**를 준비해 두고,
+                    아이들의 발언에 따라 순서를 유연하게 조정하며 수업을 이끕니다.
+                    이러한 질문 문화가 정착된 교실에서는
+                    아이들이 교사의 평가만 기다리는 수동적 학습자가 아니라,
+                    서로의 생각을 검증하고 수정하는 **작은 철학자**로 성장하게 됩니다.
+                </p>
+            </section>
+
+            <!-- 7. 노자의 무위자연 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    7. 노자의 무위자연: 아이들의 자율성을 존중하는 '기다림의 교육' [cite: 『노자(道德經)』, 2026-02-14]
+                </h3>
+                <p>
+                    『노자(老子)』에서 핵심 개념인 **무위자연(無爲自然)**은
+                    아무것도 하지 말라는 소극적 태도가 아니라,
+                    억지로 통제·조작하지 않고 사물의 본래 흐름을 존중한다는 뜻입니다.
+                    48장에 나오는
+                    <span class="hanja">「爲學日益 爲道日損(위학일익 위도일손)」</span>이라는 구절은
+                    배움은 날로 더해 가지만 도를 향해 가는 길은 날로 덜어 내는 과정이라는 의미로,
+                    과도한 간섭과 성과 집착을 내려놓을 것을 촉구합니다.
+                    현대 교육학에서는 이를 '비지시적 교육', '자율성 존중 교육'의 철학적 뿌리로 보기도 합니다.
+                </p>
+                <p>
+                    초등 교실에서 무위자연은 **'기다려 주는 교사'**의 태도로 구체화됩니다.
+                    모둠 토의 시간에 조용한 아이가 말을 잘 하지 않는다고 해서
+                    즉시 지목하여 발언을 강요하기보다는,
+                    눈빛과 몸짓으로 지지 신호를 보내며 천천히 기회를 열어 주는 것입니다.
+                    또 과제 수행 과정에서 아이가 잠시 돌아가거나 실수하더라도,
+                    교사가 모든 절차를 대신 정해 주기보다
+                    "어디서부터 다시 해 보면 좋을까?"라는 질문을 통해
+                    스스로 길을 찾게 하는 시간을 허용합니다.
+                    이러한 '느린 교육'은 아이의 내적 동기를 자라게 하는 토양이 됩니다.
+                </p>
+                <p>
+                    연구적으로는 노자의 사상이 '탈성취 중심 교육'과 '웰빙 교육'의 이론적 배경으로 인용됩니다.
+                    경쟁과 성적에 과도하게 압박받는 아이들에게
+                    "잘하는 나"보다 "있는 그대로의 나"를 존중하는 메시지를 전하는 것이 중요합니다.
+                    교사는 생활 기록부나 상담 기록에서 아이의 수치화된 성과뿐 아니라,
+                    기다려 주었을 때 스스로 문제를 해결한 경험,
+                    친구를 배려하기 위해 자신이 먼저 양보했던 순간과 같은 '보이지 않는 성장'을 기록할 수 있습니다.
+                    이는 노자가 말한 자연스러운 성숙의 과정을 교육적으로 재해석한 실천이라 할 수 있습니다.
+                </p>
+            </section>
+
+            <!-- 8. 장자의 물아일체 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    8. 장자의 물아일체: 편견 없는 다문화 교육과 다양성 존중 [cite: 『장자』, 2026-02-15]
+                </h3>
+                <p>
+                    **장자(莊子)**는 『장자』 전편에 걸쳐
+                    **물아일체(物我一體)**, 곧 나와 세계가 하나임을 깨닫는 경지를 노래합니다.
+                    「제물론(齊物論)」에서 그는
+                    <span class="hanja">「天地與我並生 萬物與我爲一」</span>이라 하여,
+                    하늘과 땅과 내가 함께 태어났고 만물이 나와 하나라는 인식을 제시합니다.
+                    현대 철학자들은 이를 '차이를 지우는 동일성'이 아니라,
+                    서로 다른 존재들이 존중 속에서 공존하는 '관계적 평등'의 상징으로 해석합니다.
+                    즉, 우열의 잣대로 타인을 재단하지 않는 태도가 장자의 핵심 메시지라는 것입니다.
+                </p>
+                <p>
+                    다문화·다양성 교육을 실시하는 초등 교실에서 장자의 사상은 중요한 이론적 토대가 됩니다.
+                    서로 다른 국적·언어·가정 배경을 가진 친구들이 함께 수업을 받을 때,
+                    교사는 "누가 '정상'이고 누가 '특별한'가?"를 구분하는 대신,
+                    각자의 차이가 반의 자산이 된다는 관점을 심어 줄 필요가 있습니다.
+                    예를 들어, 여러 나라의 인삿말·음식·명절 문화를 함께 조사하고 소개하는 프로젝트를 진행하면서,
+                    "어떤 문화가 더 좋다/나쁘다"를 평가하기보다는
+                    "각 문화가 소중한 이유가 무엇인지"를 나누게 할 수 있습니다.
+                    이는 장자가 말한 '만물이 제 빛을 가지고 있다'는 관점을 교실 안에서 구현하는 활동입니다.
+                </p>
+                <p>
+                    학술적으로, 장자의 물아일체 사상은 환경 윤리·생태 교육과도 깊게 연결됩니다.
+                    인간과 자연을 분리하지 않고 하나의 생명 공동체로 보는 시각은
+                    플라스틱 사용 줄이기, 생물 다양성 보호, 학교 숲 가꾸기 활동 등에
+                    철학적 설득력을 부여합니다.
+                    교사는 아이들과 함께 "우리가 사용하는 종이 한 장이 숲에 어떤 영향을 줄까?",
+                    "급식 시간에 남긴 음식이 지구에 어떤 흔적을 남길까?"를 이야기하며,
+                    장자의 물아일체를 **'지구 시민 의식'**으로 번역해 가르칠 수 있습니다.
+                </p>
+            </section>
+
+            <!-- 9. 칸트의 정언명령 -->
+            <section class="mb-32">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    9. 칸트의 정언명령: 초등 도덕 교육에서의 의무와 책임 의식 [cite: 칸트 『실천이성비판』, 2026-02-16]
+                </h3>
+                <p>
+                    독일 철학자 **임마누엘 칸트(Immanuel Kant)**는
+                    도덕 법칙을 "조건 없는 명령", 곧 **정언명령(Kategorischer Imperativ)**으로 설명했습니다.
+                    그의 대표적인 정식 가운데 하나는
+                    <span class="hanja">「네 행위의 준칙이 언제나 동시에 보편적 법칙이 되기를 원할 수 있도록 행동하라」</span>는 명제입니다.
+                    이는 '나만 예외'를 허용하지 않는 엄격한 보편성의 기준으로,
+                    도덕적 행위는 결과가 아니라 동기에 의해 평가된다는 입장을 보여 줍니다.
+                    현대 도덕교육 이론은 칸트의 사상을 바탕으로,
+                    타인의 감정에만 의존하지 않고 '모두에게 공정한가?'라는 질문을 던지는 능력을 기르는 데 초점을 둡니다.
+                </p>
+                <p>
+                    초등 도덕 수업에서 칸트의 정언명령은 **'숨은 규칙 찾기' 활동**으로 쉽게 풀어낼 수 있습니다.
+                    예를 들어 쓰레기를 몰래 버리거나 줄을 새치기하는 상황을 제시한 뒤,
+                    "만약 우리 반 모두가 이렇게 행동한다면 교실은 어떻게 될까?"를 함께 생각해 보게 하는 것입니다.
+                    아이들은 곧 교실이 엉망이 될 것임을 깨닫고,
+                    "내가 하려는 행동이 모두에게 허용되어도 괜찮은가?"라는 질문을 자연스럽게 배우게 됩니다.
+                    이는 단순히 '들키면 혼난다'는 두려움이 아니라,
+                    **스스로에게 부끄럽지 않은 기준**을 세우는 연습입니다.
+                </p>
+                <p>
+                    학술적으로, 칸트 윤리는 인권 교육·법 교육과 밀접하게 연결됩니다.
+                    모든 인간을 '목적 그 자체'로 대하라는 칸트의 또 다른 정언명령은
+                    학교 현장에서 왕따·조롱·디지털 폭력을 다룰 때 강력한 기준이 됩니다.
+                    교사는 "친구를 나의 목적을 위한 도구로 대하고 있지는 않은가?"를 함께 물으며,
+                    타인의 존엄을 해치는 말과 행동을 구체적인 사례를 통해 다룰 수 있습니다.
+                    이렇게 철학적 개념을 생활 장면과 연결하는 수업은,
+                    아이들에게 **'권리와 의무를 함께 생각하는 시민'**으로 성장할 토대를 마련해 줍니다.
+                </p>
+            </section>
+
+            <!-- 10. 아리스토텔레스의 중용 -->
+            <section class="mb-8">
+                <h3 class="text-3xl font-bold text-stone-900 mb-12 serif flex items-center bg-stone-100 p-6 rounded-2xl border-l-8 border-amber-800">
+                    10. 아리스토텔레스의 중용: 감정 조절과 인성 교육의 실천 원리 [cite: 『니코마코스 윤리학』, 2026-02-17]
+                </h3>
+                <p>
+                    **아리스토텔레스(Aristoteles)**는 『니코마코스 윤리학』에서
+                    덕(arete)을 과도함과 부족함 사이의 **중용(meson)**으로 정의했습니다.
+                    그는 용기를 예로 들며,
+                    지나친 무모함과 과도한 비겁함 사이의 균형 잡힌 상태가 참된 덕이라고 설명합니다.
+                    또한 덕은 타고나는 것이 아니라 반복적인 실천과 습관을 통해 길러진다고 보았습니다.
+                    현대 심리학의 정서 조절 이론과 긍정심리학에서 말하는 '강점 기반 교육'은
+                    아리스토텔레스의 덕 윤리와 깊은 친연성을 지니고 있습니다.
+                </p>
+                <p>
+                    초등 인성 교육에서는 중용의 관점을 **'감정의 온도 조절'**로 가시화할 수 있습니다.
+                    예를 들어 화가 난 상황에서 "0도는 아무 말도 못 하는 상태, 100도는 폭발하는 상태라면,
+                    우리가 지향해야 할 적절한 온도는 몇 도쯤일까?"를 함께 정해 보고,
+                    교실 한쪽에 '감정 온도계' 벽보를 만들어 두는 것입니다.
+                    아이들은 스스로 현재 감정의 온도를 표시해 보고,
+                    너무 높아졌을 때는 깊은 숨쉬기·잠시 자리에서 벗어나기·감정 일기 쓰기 등을 통해
+                    온도를 낮추는 연습을 할 수 있습니다.
+                    이는 중용을 단순한 추상 개념이 아닌 **몸으로 익히는 감정 교육**으로 전환한 사례입니다.
+                </p>
+                <p>
+                    학술적으로, 아리스토텔레스의 덕 윤리는 '품성 교육(character education)' 논의의 중심에 있습니다.
+                    학교 교육이 지식 전달에만 머물면, 아이들은 시험에는 강하지만 관계와 감정에서 쉽게 무너질 수 있습니다.
+                    교사는 생활 기록부와 학급 회의에서
+                    "용기, 절제, 배려, 정직"과 같은 덕목을 지속적으로 언급하고,
+                    구체적인 행동 사례와 연결해 피드백을 제공합니다.
+                    이렇게 철학적 개념과 일상의 작은 실천을 반복해서 연결해 주는 것이,
+                    **중용의 덕을 현대 초등 인성 교육에 살아 있게 하는 길**입니다.
+                </p>
+            </section>
+        </article>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-stone-900 text-stone-400 py-24 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-white font-bold text-2xl mb-6 serif">AI 위인 지혜 상담소</h2>
+            <p class="max-w-3xl mx-auto mb-6 text-sm leading-relaxed">
+                본 서비스는 동양 고전을 연구하며 아이들을 가르치는 <strong>현직 초등교사</strong>가 기획·운영하는 교육용 AI 플랫폼입니다.
+                공자·맹자·부처·예수·소크라테스 등 원전 자료를 바탕으로, 초등 인성 교육과 생활 지도를 돕는 상담을 제공합니다.
+            </p>
+            <nav class="mb-6">
+                <ul class="flex flex-wrap justify-center gap-6 text-xs md:text-sm font-semibold">
+                    <li><a href="/privacy.html" class="hover:text-white transition">개인정보처리방침</a></li>
+                    <li><a href="/terms.html" class="hover:text-white transition">이용약관</a></li>
+                    <li><a href="/about.html" class="hover:text-white transition">운영자 소개</a></li>
+                </ul>
+            </nav>
+            <p class="text-xs mb-2">
+                문의: <a href="mailto:ai.classic.sage@gmail.com" class="underline hover:text-white">ai.classic.sage@gmail.com</a>
+            </p>
+            <p class="text-[11px] mb-4">
+                (교육·연구용 서비스로, 법률·의학·심리 등 전문 상담을 대체하지 않습니다.)
+            </p>
+            <div class="pt-6 border-t border-stone-800 text-[10px] opacity-60 tracking-[0.2em]">
+                &copy; 2026 AI CLASSIC SAGE COUNSELING. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <!-- 모달: 개인정보처리방침 -->
+    <div id="modal-privacy" class="modal">
+        <div class="modal-content">
+            <h2 class="text-3xl font-bold mb-8 serif border-b-4 border-stone-900 pb-4">개인정보처리방침 (Privacy Policy)</h2>
+            <div class="space-y-6 text-stone-700 leading-loose text-left">
+                <p class="font-bold text-lg">제1조 (개인정보의 처리 목적)</p>
+                <p>본 사이트('AI 위인 지혜 상담소')는 이용자의 개인정보를 수집하지 않는 것을 원칙으로 합니다. 상담 내용은 브라우저 세션 내에서만 존재하며 서버에 저장되지 않습니다.</p>
+                <p class="font-bold text-lg">제2조 (쿠키의 사용 및 거부)</p>
+                <p>본 사이트는 구글 에드센스 등 광고 게재를 목적으로 제3자 쿠키를 사용할 수 있습니다. 이용자는 브라우저 설정을 통해 쿠키 수집을 거부할 수 있습니다.</p>
+                <p class="font-bold text-lg">제3조 (문의처)</p>
+                <p>개인정보와 관련한 문의사항은 제작자 프로필 섹션의 정보를 참조해 주시기 바랍니다.</p>
+            </div>
+            <button onclick="closeModal('privacy')" class="mt-12 w-full bg-stone-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-black transition-colors">닫기</button>
+        </div>
+    </div>
+
+    <!-- 모달: 이용약관 -->
+    <div id="modal-terms" class="modal">
+        <div class="modal-content">
+            <h2 class="text-3xl font-bold mb-8 serif border-b-4 border-stone-900 pb-4">서비스 이용약관 (Terms of Service)</h2>
+            <div class="space-y-6 text-stone-700 leading-loose text-left">
+                <p class="font-bold text-lg">제1조 (목적)</p>
+                <p>본 약관은 본 사이트가 제공하는 AI 상담 서비스의 이용 조건 및 절차를 규정합니다.</p>
+                <p class="font-bold text-lg">제2조 (서비스의 한계)</p>
+                <p>본 서비스에서 제공하는 답변은 AI가 고전 사료를 바탕으로 생성한 가이드라인이며, 전문적인 법률적, 의학적 상담을 대체할 수 없습니다. 상담 결과를 삶에 적용하는 최종 책임은 이용자 본인에게 있습니다.</p>
+                <p class="font-bold text-lg">제3조 (저작권)</p>
+                <p>본 사이트에 게재된 지식 백과 텍스트 및 디자인의 저작권은 운영자에게 있으며, 무단 전재 및 배포를 금합니다.</p>
+            </div>
+            <button onclick="closeModal('terms')" class="mt-12 w-full bg-stone-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-black transition-colors">닫기</button>
+        </div>
+    </div>
+
+    <script src="/main.js"></script>
+    <script>
+        function openModal(type) { document.getElementById('modal-' + type).style.display = 'block'; document.body.style.overflow = 'hidden'; }
+        function closeModal(type) { document.getElementById('modal-' + type).style.display = 'none'; document.body.style.overflow = 'auto'; }
+        window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = 'none'; document.body.style.overflow = 'auto'; } }
+    </script>
+</body>
+</html>
