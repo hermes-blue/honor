@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 메인 홈페이지 -->
+  <url>
+    <loc>https://hermes-blue.github.io/honor/</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://hermes-blue.github.io/honor/"/>
+  </url>
+
+  <!-- 운영자 소개 -->
+  <url>
+    <loc>https://hermes-blue.github.io/honor/about.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://hermes-blue.github.io/honor/about.html"/>
+  </url>
+
+  <!-- 개인정보처리방침 -->
+  <url>
+    <loc>https://hermes-blue.github.io/honor/privacy.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://hermes-blue.github.io/honor/privacy.html"/>
+  </url>
+
+  <!-- 이용약관 -->
+  <url>
+    <loc>https://hermes-blue.github.io/honor/terms.html</loc>
+    <lastmod>2026-02-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://hermes-blue.github.io/honor/terms.html"/>
+  </url>
+
+</urlset>
